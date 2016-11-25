@@ -17,16 +17,16 @@ namespace Xero.Api.Example.Applications
 
         private OAuthTokens _tokens;
 
-        protected OAuthTokens Tokens 
+        protected OAuthTokens Tokens
         {
-            get 
+            get
             {
                 if (_tokens == null)
                 {
-                    _tokens = new OAuthTokens(_tokenUri, BaseUri, GetClientCertificate());      
+                    _tokens = new OAuthTokens(_tokenUri, BaseUri, GetClientCertificate());
                 }
                 return _tokens;
-            } 
+            }
         }
 
         protected AsyncTokenStoreAuthenticator(string baseUri, string tokenUri, string callBackUri, IAsyncTokenStore store)
@@ -34,12 +34,12 @@ namespace Xero.Api.Example.Applications
             _tokenUri = tokenUri;
             CallBackUri = callBackUri;
             BaseUri = baseUri;
-            Store = store;                      
+            Store = store;
         }
 
         protected virtual X509Certificate2 GetClientCertificate()
         {
-            return null;            
+            return null;
         }
 
         public Task<string> GetSignatureAsync(IConsumer consumer, IUser user, Uri uri, string verb, IConsumer consumer1)
@@ -76,7 +76,7 @@ namespace Xero.Api.Example.Applications
 
             if (!token.HasExpired)
                 return token;
-            
+
             var newToken = await RenewTokenAsync(token, consumer);
             newToken.UserId = user.Name;
 
@@ -102,7 +102,7 @@ namespace Xero.Api.Example.Applications
         protected virtual async Task<IToken> GetTokenAsync(IConsumer consumer, CancellationToken cancellation = default(CancellationToken))
         {
             var requestToken = await GetRequestTokenAsync(consumer);
-   
+
             var verifier = await AuthorizeUserAsync(requestToken);
 
             return await Tokens.GetAccessTokenAsync(requestToken,
@@ -124,7 +124,7 @@ namespace Xero.Api.Example.Applications
                 ConsumerKey = consumer.ConsumerKey,
                 ConsumerSecret = consumer.ConsumerSecret
             };
-            
+
             var requestTokenOAuthHeader = GetAuthorization(token, "POST", Tokens.RequestUri, callback: CallBackUri);
 
             return await Tokens.GetRequestTokenAsync(consumer, requestTokenOAuthHeader);

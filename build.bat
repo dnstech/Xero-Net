@@ -27,3 +27,4 @@ mkdir Build\lib\net45
 rem About to pack Nugets
 call %NuGet% pack "minimal.nuspec" -Symbols -OutputDirectory Build\lib\net45 -Version %version%
 call %NuGet% pack "nuget.nuspec" -symbols -OutputDirectory  Build\lib\net45 -Version %version%
+call %NuGet% pack "core.nuspec" -symbols -OutputDirectory  Build\lib\net45 -Version %version%

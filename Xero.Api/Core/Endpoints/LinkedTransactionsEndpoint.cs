@@ -20,7 +20,7 @@ namespace Xero.Api.Core.Endpoints
     public partial class LinkedTransactionsEndpoint
         : XeroUpdateEndpoint<LinkedTransactionsEndpoint, LinkedTransaction, LinkedTransactionsRequest, LinkedTransactionsResponse>, ILinkedTransactionsEndpoint
     {
-        internal LinkedTransactionsEndpoint(XeroHttpClient client) 
+        internal LinkedTransactionsEndpoint(XeroHttpClient client)
             : base(client, "/api.xro/2.0/LinkedTransactions")
         {
             Page(1);
@@ -38,6 +38,12 @@ namespace Xero.Api.Core.Endpoints
         public ILinkedTransactionsEndpoint Page(int page)
         {
             AddParameter("page", page);
+            return this;
+        }
+
+        public ILinkedTransactionsEndpoint AllPages()
+        {
+            RemoveParameter("page");
             return this;
         }
 

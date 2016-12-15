@@ -30,6 +30,12 @@ namespace Xero.Api.Core.Endpoints
             return this;
         }
 
+        public IInvoicesEndpoint AllPages()
+        {
+            RemoveParameter("page");
+            return this;
+        }
+
         public override void ClearQueryString()
         {
             base.ClearQueryString();

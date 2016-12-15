@@ -31,6 +31,12 @@ namespace Xero.Api.Core.Endpoints
             return this;
         }
 
+        public IPurchaseOrdersEndpoint AllPages()
+        {
+            RemoveParameter("page");
+            return this;
+        }
+
         public PurchaseOrdersEndpoint Status(PurchaseOrderStatus status)
         {
             AddParameter("status", status.ToString().ToUpper());

@@ -24,7 +24,8 @@ namespace Xero.Api.Example.Counts
             Console.WriteLine("There are {0} bank transactions", (await _api.BankTransactions.FindAsync()).Count());
             Console.WriteLine("There are {0} bank transfers", (await _api.BankTransfers.FindAsync()).Count());
             Console.WriteLine("There are {0} branding themes", (await _api.BrandingThemes.FindAsync()).Count());
-            Console.WriteLine("There are {0} contacts", await GetTotalContactCountAsync());
+            Console.WriteLine("There are {0} contacts (paged)", await GetTotalContactCountAsync());
+            Console.WriteLine("There are {0} contacts (unpaged)", (await _api.Contacts.AllPages().FindAsync()).Count());
             Console.WriteLine("There are {0} credit notes", (await _api.CreditNotes.FindAsync()).Count());
             Console.WriteLine("There are {0} currencies", (await _api.Currencies.FindAsync()).Count());
             Console.WriteLine("There are {0} employees", (await _api.Employees.FindAsync()).Count());

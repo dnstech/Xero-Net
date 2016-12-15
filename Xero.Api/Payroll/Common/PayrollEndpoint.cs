@@ -51,5 +51,10 @@ namespace Xero.Api.Payroll.Common
             return this;
         }
 
+        public PayrollEndpoint<T, TResult, TRequest, TResponse> AllPages()
+        {
+            RemoveParameter("page");
+            return this;
+        }
     }
 }

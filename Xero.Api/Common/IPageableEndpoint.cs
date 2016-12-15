@@ -3,5 +3,7 @@
     public interface IPageableEndpoint<T>
     {
         T Page(int page);
+
+        T AllPages();
     }
 }

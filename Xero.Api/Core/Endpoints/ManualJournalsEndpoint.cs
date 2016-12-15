@@ -25,5 +25,11 @@ namespace Xero.Api.Core.Endpoints
             AddParameter("page", page);
             return this;
         }
+
+        public IManualJournalsEndpoint AllPages()
+        {
+            RemoveParameter("page");
+            return this;
+        }
     }
 }

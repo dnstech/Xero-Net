@@ -22,8 +22,9 @@ rem About to build solution
 
 mkdir Build
 mkdir Build\lib
-mkdir Build\lib\net40
+mkdir Build\lib\net45
 
 rem About to pack Nugets
-call %NuGet% pack "minimal.nuspec" -Symbols -OutputDirectory Build\lib\net40 -Version %version%
-call %NuGet% pack "nuget.nuspec" -symbols -OutputDirectory  Build\lib\net40 -Version %version%
+call %NuGet% pack "minimal.nuspec" -Symbols -OutputDirectory Build\lib\net45 -Version %version%
+call %NuGet% pack "nuget.nuspec" -symbols -OutputDirectory  Build\lib\net45 -Version %version%
+call %NuGet% pack "core.nuspec" -symbols -OutputDirectory  Build\lib\net45 -Version %version%

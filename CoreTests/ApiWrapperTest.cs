@@ -1,6 +1,9 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using Xero.Api.Core;
 using Xero.Api.Core.Model;
+using Xero.Api.Example.TokenStores;
+using Xero.Api.Infrastructure.OAuth;
 
 namespace CoreTests
 {
@@ -18,7 +21,9 @@ namespace CoreTests
 
         private static IXeroCoreApi CreateCoreApi()
         {
-            return new Xero.Api.Example.Applications.Private.Core
+            var user = new ApiUser { Name = Environment.MachineName };
+            var tokenStore = new SqliteTokenStore();
+            return new Xero.Api.Example.Applications.Public.Core(tokenStore, user)
             {
                 UserAgent = "Xero Api - Integration tests"
             };

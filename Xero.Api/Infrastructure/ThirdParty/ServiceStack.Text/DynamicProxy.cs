@@ -30,7 +30,7 @@ namespace Xero.Api.Infrastructure.ThirdParty.ServiceStack.Text {
 
 		static DynamicProxy () {
 			var assemblyName = new AssemblyName("DynImpl");
-			DynamicAssembly = AppDomain.CurrentDomain.DefineDynamicAssembly(assemblyName, AssemblyBuilderAccess.RunAndSave);
+			DynamicAssembly = AssemblyBuilder.DefineDynamicAssembly(assemblyName, AssemblyBuilderAccess.RunAndCollect);
 			ModuleBuilder = DynamicAssembly.DefineDynamicModule("DynImplModule");
 		}
 

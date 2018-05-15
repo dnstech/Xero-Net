@@ -308,7 +308,7 @@ namespace Xero.Api.Infrastructure.ThirdParty.ServiceStack.Text.Json
         public void WriteLinqBinary(TextWriter writer, object linqBinaryValue)
         {
 #if !MONOTOUCH && !SILVERLIGHT && !XBOX  && !ANDROID
-            WriteRawString(writer, Convert.ToBase64String(((System.Data.Linq.Binary)linqBinaryValue).ToArray()));
+            WriteRawString(writer, Convert.ToBase64String(((byte[])linqBinaryValue).ToArray()));
 #endif
         }
 

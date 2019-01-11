@@ -4,7 +4,6 @@ using Xero.Api.Common;
 using Xero.Api.Core.Endpoints;
 using Xero.Api.Core.Model;
 using Xero.Api.Core.Model.Setup;
-using Xero.Api.Core.Response;
 using Xero.Api.Infrastructure.Interfaces;
 using Xero.Api.Infrastructure.RateLimiter;
 using Xero.Api.Serialization;
@@ -14,8 +13,6 @@ namespace Xero.Api.Core
 {
     public class XeroCoreApi : XeroApi, IXeroCoreApi
     {
-        private IOrganisationEndpoint OrganisationEndpoint { get; set; }
-
         public XeroCoreApi(string baseUri, IAuthenticator auth, IConsumer consumer, IUser user,
             IJsonObjectMapper readMapper, IXmlObjectMapper writeMapper)
             : this(baseUri, auth, consumer, user, readMapper, writeMapper, null)
@@ -52,6 +49,7 @@ namespace Xero.Api.Core
         public IExpenseClaimsEndpoint ExpenseClaims { get; private set; }
         public IFilesEndpoint Files { get; private set; }
         public IFoldersEndpoint Folders { get; private set; }
+        public IHistoryAndNotesEndpoint HistoryAndNotes { get; private set; }
         public IInboxEndpoint Inbox { get; private set; }
         public IAssociationsEndpoint Associations { get; private set; }
         public IInvoicesEndpoint Invoices { get; private set; }
@@ -59,6 +57,7 @@ namespace Xero.Api.Core
         public IJournalsEndpoint Journals { get; protected set; }
         public ILinkedTransactionsEndpoint LinkedTransactions { get; private set; }
         public IManualJournalsEndpoint ManualJournals { get; private set; }
+        public IOrganisationEndpoint Organisations { get; private set; }
         public IOverpaymentsEndpoint Overpayments { get; private set; }
         public IPaymentsEndpoint Payments { get; private set; }
         public PdfEndpoint PdfFiles { get; private set; }
@@ -75,7 +74,7 @@ namespace Xero.Api.Core
 
         private void Connect()
         {
-            OrganisationEndpoint = new OrganisationEndpoint(Client);
+            Organisations = new OrganisationEndpoint(Client);
 
             Accounts = new AccountsEndpoint(Client);
             Allocations = new AllocationsEndpoint(Client);
@@ -91,6 +90,7 @@ namespace Xero.Api.Core
             ExpenseClaims = new ExpenseClaimsEndpoint(Client);
             Files = new FilesEndpoint(Client);
             Folders = new FoldersEndpoint(Client);
+            HistoryAndNotes = new HistoryAndNotesEndpoint(Client);
             Inbox = new InboxEndpoint(Client);
             Associations = new AssociationsEndpoint(Client);
             Invoices = new InvoicesEndpoint(Client);
@@ -116,7 +116,7 @@ namespace Xero.Api.Core
         {
             get
             {
-                return OrganisationEndpoint.Find().FirstOrDefault();
+                return Organisations.Find().FirstOrDefault();
             }
         }
 

@@ -3,6 +3,15 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
     <Version>2.0.0.0</Version>
+    <PackageId>Dnstech.Xero.API.Async.SDK.Core</PackageId>
+    <Title>Xero API SDK (Minimal)</Title>
+    <Authors>DNS Technology, Xero</Authors>
+    <Description>This is a .NET SDK library, written in C#, used to communicate with the Xero API. See https://github.com/XeroAPI/Xero-Net for more information. This contains only the core module with no examples.</Description>
+    <Copyright>Copyright &amp;#x00A9; DNS Technology Pty Ltd. All rights reserved.</Copyright>
+    <PackageProjectUrl>https://github.com/XeroAPI/Xero-Net</PackageProjectUrl>
+    <PackageLicenseUrl>https://github.com/XeroAPI/Xero-Net</PackageLicenseUrl>
+    <PackageIconUrl>https://secure.gravatar.com/avatar/7fff030fb8040a5157c3fd463858167f.png?s=128</PackageIconUrl>
+    <PackageTags>dnstech xero api sdk async</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>

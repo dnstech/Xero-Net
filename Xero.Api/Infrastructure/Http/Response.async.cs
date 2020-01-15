@@ -12,7 +12,7 @@ namespace Xero.Api.Infrastructure.Http
         private Response(System.Net.Http.HttpResponseMessage inner, Stream stream)
         {
             StatusCode = inner.StatusCode;
-            ContentLength = (int)inner.Content.Headers.ContentLength;
+            ContentLength = (int)inner.Content.Headers.ContentLength.GetValueOrDefault();
             ContentType = inner.Content.Headers.ContentType.MediaType;
             Stream = stream;
         }
